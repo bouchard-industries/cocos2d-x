@@ -45,6 +45,16 @@ int Device::getDPI()
     return dpi;
 }
 
+int Device::getPPI()
+{
+    static int ppi = -1;
+    if (ppi == -1)
+    {
+        ppi = JniHelper::callStaticIntMethod(helperClassName, "getPPI");
+    }
+    return ppi;
+}
+
 void Device::setAccelerometerEnabled(bool isEnabled)
 {
     if (isEnabled)

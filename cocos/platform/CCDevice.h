@@ -66,6 +66,12 @@ public:
      *  @return The DPI of device.
      */
     static int getDPI();
+
+    /**
+    *  ANDROID ONLY Gets the PPI of device
+    *  @return The PPI of device.
+    */
+    static int getPPI();
     
     /**
      * To enable or disable accelerometer.

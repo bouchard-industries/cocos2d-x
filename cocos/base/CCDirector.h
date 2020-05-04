@@ -315,6 +315,8 @@ public:
      */
     void replaceScene(Scene *scene);
 
+    Scene* getPreviousScene();
+
     /** Ends the execution, releases the running scene.
      * @lua endToLua
      */

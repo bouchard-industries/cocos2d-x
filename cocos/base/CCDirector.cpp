@@ -930,6 +930,13 @@ void Director::popToSceneStackLevel(int level)
     _sendCleanupToScene = true;
 }
 
+Scene* Director::getPreviousScene()
+{
+    unsigned int c = _scenesStack.size();
+    if (c <= 1) return NULL;
+    return (Scene*)_scenesStack.at(c - 2);
+}
+
 void Director::end()
 {
     _purgeDirectorInNextLoop = true;

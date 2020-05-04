@@ -423,6 +423,37 @@ public class Cocos2dxHelper {
         }
         return -1;
     }
+
+    public static int getPPI()
+    {
+        if (sActivity != null)
+        {
+            DisplayMetrics dm = new DisplayMetrics();
+            WindowManager wm = sActivity.getWindowManager();
+            if (wm != null)
+            {
+                Display d = wm.getDefaultDisplay();
+                if (d != null)
+                {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                        d.getRealMetrics(dm);
+                    } else {
+                        d.getMetrics(dm);
+                    }
+
+                    double x = Math.pow(dm.widthPixels / dm.xdpi, 2);
+                    double y = Math.pow(dm.heightPixels / dm.ydpi, 2);
+
+                    double screenInches = Math.sqrt(x + y);
+                    Log.d("cjh", "Screen inches : " + screenInches);
+                    double ppi = Math.sqrt(dm.widthPixels * dm.widthPixels + dm.heightPixels * dm.heightPixels) / screenInches;
+                    Log.d("cjh", "dpi: " + dm.densityDpi + ", ppi: " + (int)ppi);
+                    return (int)ppi;
+                }
+            }
+        }
+        return -1;
+    }
     
     // ===========================================================
     // Functions for CCUserDefault
